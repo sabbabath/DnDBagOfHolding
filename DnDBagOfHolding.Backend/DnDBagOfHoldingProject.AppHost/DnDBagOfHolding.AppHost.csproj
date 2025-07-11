@@ -1,27 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0" />
+
   <PropertyGroup>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>7626cdbd-7cd0-4289-b524-e32fdcb3652e</UserSecretsId>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
   </ItemGroup>
-  
+
   <ItemGroup>
-    <ProjectReference Include="..\DbDBagOfHolding.Common\DnDBagOfHolding.Common.csproj" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DbDBagOfHolding.Data\DnDBagOfHolding.Data.csproj" />
   </ItemGroup>
 
 </Project>

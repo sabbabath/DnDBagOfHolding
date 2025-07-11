@@ -1,9 +1,11 @@
+using DnDBagOfHolding.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.ServiceDiscovery;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
@@ -21,6 +23,8 @@ public static class Extensions
 
         builder.AddDefaultHealthChecks();
 
+        builder.ConnectToDatabase();
+
         builder.Services.AddServiceDiscovery();
 
         builder.Services.ConfigureHttpClientDefaults(http =>
@@ -37,6 +41,17 @@ public static class Extensions
         // {
         //     options.AllowedSchemes = ["https"];
         // });
+
+        return builder;
+    }
+
+    private static TBuilder ConnectToDatabase<TBuilder>(this TBuilder builder) where TBuilder : IHostApplicationBuilder
+    {
+        builder.Services
+            .AddDbContext<cDbContext>(options =>
+                options
+                    .UseSqlServer(builder.Configuration.GetConnectionString("Database"))
+                    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking), ServiceLifetime.Transient);
 
         return builder;
     }
