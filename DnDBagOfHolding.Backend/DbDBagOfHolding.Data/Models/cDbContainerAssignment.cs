@@ -7,12 +7,12 @@ namespace DnDBagOfHolding.Data.Models
     public class cDbContainerAssignment : cDbBaseEntity
     {
         [Required]
-        public Guid ContainerId { get; set; }
+        public long ContainerId { get; set; }
 
         public virtual cDbContainer Container { get; set; }
 
         [Required]
-        public Guid CharacterId { get; set; }
+        public long CharacterId { get; set; }
 
         public virtual cDbCharacter Character { get; set; }
     }

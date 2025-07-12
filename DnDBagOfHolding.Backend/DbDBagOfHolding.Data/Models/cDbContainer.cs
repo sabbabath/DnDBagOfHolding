@@ -5,7 +5,7 @@ namespace DnDBagOfHolding.Data.Models
     [Table("Containers")]
     public class cDbContainer : cDbBaseEntity
     {
-        public Guid ContainerTypeId { get; set; }
+        public long ContainerTypeId { get; set; }
 
         public cDbContainerType ContainerType { get; set; }
 

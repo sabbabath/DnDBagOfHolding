@@ -4,7 +4,7 @@ namespace DnDBagOfHolding.Common.Models.Dtos
 {
     public class cDtoContainer
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         public long ContainerTypeId { get; set; }
 
