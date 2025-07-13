@@ -1,4 +1,5 @@
 using DnDBagOfHolding.Data;
+using Mapster;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,8 @@ public static class Extensions
         builder.ConnectToDatabase();
 
         builder.Services.AddServiceDiscovery();
+
+        builder.Services.AddMapster();
 
         builder.Services.ConfigureHttpClientDefaults(http =>
         {
