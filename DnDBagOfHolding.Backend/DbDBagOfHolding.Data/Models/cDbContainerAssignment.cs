@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DnDBagOfHolding.Common.Models.Dtos;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DnDBagOfHolding.Data.Models
@@ -15,5 +16,14 @@ namespace DnDBagOfHolding.Data.Models
         public long CharacterId { get; set; }
 
         public virtual cDbCharacter Character { get; set; }
+
+        public void UpdateFromDto(cDtoContainerAssignment assignment)
+        {
+            if (assignment == null) return;
+
+            ContainerId = assignment.ContainerId;
+
+            CharacterId = assignment.CharacterId;
+        }
     }
 }

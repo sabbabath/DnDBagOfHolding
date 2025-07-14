@@ -1,4 +1,5 @@
-﻿using DnDBagOfHolding.Common.Models.Enums;
+﻿using DnDBagOfHolding.Common.Models.Dtos; // Add this if not present
+using DnDBagOfHolding.Common.Models.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DnDBagOfHolding.Data.Models
@@ -11,5 +12,14 @@ namespace DnDBagOfHolding.Data.Models
         public decimal Weight { get; set; }
 
         public eSize Size { get; set; }
+
+        public void UpdateFromDto(cDtoItem item)
+        {
+            if (item == null) return;
+
+            Name = item.Name;
+            Weight = item.Weight;
+            Size = item.Size;
+        }
     }
 }

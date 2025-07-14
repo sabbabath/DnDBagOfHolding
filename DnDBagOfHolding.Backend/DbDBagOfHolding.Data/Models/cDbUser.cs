@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using DnDBagOfHolding.Common.Models.Dtos; // Add if not present
 
 namespace DnDBagOfHolding.Data.Models
 {
@@ -6,5 +7,12 @@ namespace DnDBagOfHolding.Data.Models
     public class cDbUser : cDbBaseEntity
     {
         public string Username { get; set; }
+
+        public void UpdateFromDto(cDtoUser user)
+        {
+            if (user == null) return;
+
+            Username = user.Username;
+        }
     }
 }

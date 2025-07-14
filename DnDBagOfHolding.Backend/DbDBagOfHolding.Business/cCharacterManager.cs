@@ -1,35 +1,42 @@
 ﻿using DnDBagOfHolding.Common.Models.Dtos;
 using DnDBagOfHolding.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DnDBagOfHolding.Data.Models;
+using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
+using System.Xml.Linq;
 
 namespace DnDBagOfHolding.Business
 {
-    public class cCharacterManager
+    public class cCharacterManager(cDbContext dbContext, IMapper mapper)
     {
-        private readonly cDbContext dbContext;
+        private readonly cDbContext dbContext = dbContext;
 
-        public cCharacterManager(cDbContext dbContext)
+        private readonly IMapper _mapper = mapper;
+
+        public async Task<cDtoCharacter> CreateCharacter(cDtoCharacter character)
         {
-            this.dbContext = dbContext;
+            var dbCharacter = _mapper.Map<cDbCharacter>(character);
+            await dbContext.Characters.AddAsync(dbCharacter);
+            await dbContext.SaveChangesAsync();
+
+            return character;
         }
 
-        public Task<cDtoCharacter> CreateCharacter()
+        public async Task<cDtoCharacter> UpdateCharacter(cDtoCharacter character)
         {
+            var dbCharacter = await dbContext.Characters.FirstOrDefaultAsync(x => x.Id == character.Id)
+                ?? throw new Exception("Character does not exist.");
+            dbCharacter.UpdateFromDto(character);
+            await dbContext.SaveChangesAsync();
 
+            return character;
         }
 
-        public Task<cDtoCharacter> UpdateCharacter()
+        public async Task DeleteCharacter(long id)
         {
-
-        }
-
-        public Task DeleteCharacter()
-        {
-
+            var character = await dbContext.Characters.FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("Character does not exist.");
+            dbContext.Characters.Remove(character);
+            await dbContext.SaveChangesAsync();
         }
     }
 }

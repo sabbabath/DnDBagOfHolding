@@ -1,4 +1,6 @@
-﻿using DnDBagOfHolding.Common.Models.Enums;
+﻿using DnDBagOfHolding.Common.Models.Dtos;
+using DnDBagOfHolding.Common.Models.Enums;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DnDBagOfHolding.Data.Models
@@ -11,5 +13,16 @@ namespace DnDBagOfHolding.Data.Models
         public eSize CharacterSize { get; set; }
 
         public long StrengthScore { get; set; }
+
+        public void UpdateFromDto(cDtoCharacter character)
+        {
+            if (character == null) return;
+
+            Name = character.Name;
+
+            CharacterSize = character.CharacterSize;
+
+            StrengthScore = character.StrengthScore;
+        }
     }
 }

@@ -28,7 +28,10 @@ public static class Extensions
 
         builder.Services.AddServiceDiscovery();
 
+        // Mapster
         builder.Services.AddMapster();
+        cMappingConfig.RegisterMappings();
+
 
         builder.Services.ConfigureHttpClientDefaults(http =>
         {
