@@ -1,35 +1,41 @@
 ﻿using DnDBagOfHolding.Common.Models.Dtos;
 using DnDBagOfHolding.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DnDBagOfHolding.Data.Models;
+using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace DnDBagOfHolding.Business
 {
-    public class cItemManager
+    public class cItemManager(cDbContext dbContext, IMapper mapper)
     {
-        private readonly cDbContext dbContext;
+        private readonly cDbContext dbContext = dbContext;
 
-        public cItemManager(cDbContext dbContext)
+        private readonly IMapper _mapper = mapper;
+
+        public async Task<cDtoItem> CreateItem(cDtoItem item)
         {
-            this.dbContext = dbContext;
+            var dbItem = _mapper.Map<cDbItem>(item);
+            await dbContext.Items.AddAsync(dbItem);
+            await dbContext.SaveChangesAsync();
+
+            return item;
         }
 
-        public Task<cDtoItem> CreateItem()
+        public async Task<cDtoItem> UpdateItem(cDtoItem item)
         {
+            var dbItem = await dbContext.Items.FirstOrDefaultAsync(x => x.Id == item.Id)
+                ?? throw new Exception("Container does not exist.");
+            dbItem.UpdateFromDto(item);
+            await dbContext.SaveChangesAsync();
 
+            return item;
         }
 
-        public Task<cDtoItem> UpdateItem()
+        public async Task DeleteItem(long id)
         {
-
-        }
-
-        public Task DeleteItem()
-        {
-
+            var dbItem = await dbContext.Items.FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("Container does not exist.");
+            dbContext.Items.Remove(dbItem);
+            await dbContext.SaveChangesAsync();
         }
     }
 }

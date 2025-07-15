@@ -1,35 +1,41 @@
 ﻿using DnDBagOfHolding.Common.Models.Dtos;
 using DnDBagOfHolding.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DnDBagOfHolding.Data.Models;
+using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace DnDBagOfHolding.Business
 {
-    public class cContainerTypeManager
+    public class cContainerTypeManager(cDbContext dbContext, IMapper mapper)
     {
-        private readonly cDbContext dbContext;
+        private readonly cDbContext dbContext = dbContext;
 
-        public cContainerTypeManager(cDbContext dbContext)
+        private readonly IMapper _mapper = mapper;
+
+        public async Task<cDtoContainerType> CreateContainerType(cDtoContainerType containerType)
         {
-            this.dbContext = dbContext;
+            var dbContainerType = _mapper.Map<cDbContainerType>(containerType);
+            await dbContext.ContainerTypes.AddAsync(dbContainerType);
+            await dbContext.SaveChangesAsync();
+
+            return containerType;
         }
 
-        public Task<cDtoContainerType> CreateContainerType()
+        public async Task<cDtoContainerType> UpdateContainerType(cDtoContainerType containerType)
         {
+            var dbContainerType = await dbContext.ContainerTypes.FirstOrDefaultAsync(x => x.Id == containerType.Id)
+                ?? throw new Exception("Container does not exist.");
+            dbContainerType.UpdateFromDto(containerType);
+            await dbContext.SaveChangesAsync();
 
+            return containerType;
         }
 
-        public Task<cDtoContainerType> UpdateContainerType()
+        public async Task DeleteContainerType(long id)
         {
-
-        }
-
-        public Task DeleteContainerType()
-        {
-
+            var dbContainerType = await dbContext.ContainerTypes.FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("Container does not exist.");
+            dbContext.ContainerTypes.Remove(dbContainerType);
+            await dbContext.SaveChangesAsync();
         }
 
     }
