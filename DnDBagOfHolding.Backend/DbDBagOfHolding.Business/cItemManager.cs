@@ -12,6 +12,19 @@ namespace DnDBagOfHolding.Business
 
         private readonly IMapper _mapper = mapper;
 
+        public async Task<cDtoItem> GetItem(long id)
+        {
+            var dbItem = await dbContext.Items.FirstOrDefaultAsync(x => x.Id == id)
+                ?? throw new Exception("Container does not exist.");
+            return _mapper.Map<cDtoItem>(dbItem);
+        }
+
+        public async Task<IEnumerable<cDtoItem>> GetItems()
+        {
+            var dbItems = await dbContext.Items.ToListAsync();
+            return _mapper.Map<IEnumerable<cDtoItem>>(dbItems);
+        }
+
         public async Task<cDtoItem> CreateItem(cDtoItem item)
         {
             var dbItem = _mapper.Map<cDbItem>(item);

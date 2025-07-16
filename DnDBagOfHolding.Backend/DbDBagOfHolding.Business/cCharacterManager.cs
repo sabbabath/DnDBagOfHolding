@@ -12,6 +12,19 @@ namespace DnDBagOfHolding.Business
 
         private readonly IMapper _mapper = mapper;
 
+        public async Task<cDtoCharacter> GetCharacter(long id)
+        {
+            var dbCharacter = await dbContext.Characters
+                .FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("Character does not exist.");
+            return _mapper.Map<cDtoCharacter>(dbCharacter);
+        }
+
+        public async Task<IEnumerable<cDtoCharacter>> GetCharacters()
+        {
+            var dbCharacters = await dbContext.Characters.ToListAsync();
+            return _mapper.Map<IEnumerable<cDtoCharacter>>(dbCharacters);
+        }
+
         public async Task<cDtoCharacter> CreateCharacter(cDtoCharacter character)
         {
             var dbCharacter = _mapper.Map<cDbCharacter>(character);
