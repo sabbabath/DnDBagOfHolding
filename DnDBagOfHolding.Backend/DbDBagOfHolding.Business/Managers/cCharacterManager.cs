@@ -4,7 +4,7 @@ using DnDBagOfHolding.Data.Models;
 using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace DnDBagOfHolding.Business
+namespace DnDBagOfHolding.Business.Managers
 {
     public class cCharacterManager(cDbContext dbContext, IMapper mapper)
     {
