@@ -1,4 +1,5 @@
-﻿using DnDBagOfHolding.Common.Models.Dtos;
+﻿using DnDBagOfHolding.Business.Interfaces;
+using DnDBagOfHolding.Common.Models.Dtos;
 using DnDBagOfHolding.Data;
 using DnDBagOfHolding.Data.Models;
 using MapsterMapper;
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DnDBagOfHolding.Business.Managers
 {
-    public class cCharacterManager(cDbContext dbContext, IMapper mapper)
+    public class cCharacterManager(cDbContext dbContext, IMapper mapper) : iCharacterManager
     {
         private readonly cDbContext dbContext = dbContext;
 
