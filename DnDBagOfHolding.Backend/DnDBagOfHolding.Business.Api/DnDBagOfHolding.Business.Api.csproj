@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DbDBagOfHolding.Data\DnDBagOfHolding.Data.csproj" />
-    <ProjectReference Include="..\DnDBagOfHolding.Business.Api\DnDBagOfHolding.Business.Api.csproj" />
+    <ProjectReference Include="..\DbDBagOfHolding.Common\DnDBagOfHolding.Common.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,28 +1,23 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DnDBagOfHolding.AppHost.Api
+namespace DnDBagOfHolding.ServiceDefaults.Api
 {
-    [Route("api/characters")]
+    [Route("api/containers")]
     [ApiController]
-    public class cCharactersController : ControllerBase
+    public class cContainersController : ControllerBase
     {
 
         [HttpGet()]
         public async Task<HttpResponse> GetAll()
         {
-
+            return null;
         }
 
         [HttpGet("{id}")]
         public async Task<HttpResponse> GetById(long id)
         {
-
+            return null;
         }
     }
 }

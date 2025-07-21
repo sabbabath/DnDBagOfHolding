@@ -1,4 +1,4 @@
-﻿using DnDBagOfHolding.Business.Interfaces;
+﻿using DnDBagOfHolding.Business.Api.Interfaces;
 using DnDBagOfHolding.Common.Models.Dtos;
 using DnDBagOfHolding.Data;
 using DnDBagOfHolding.Data.Models;

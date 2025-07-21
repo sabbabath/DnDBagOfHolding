@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDBagOfHolding.Data", "DbD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDBagOfHolding.Tests", "DnDBagOfHolding.Tests\DnDBagOfHolding.Tests.csproj", "{12F474E8-4C7F-4F45-B627-42E110AC4899}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDBagOfHolding.Business.Api", "DnDBagOfHolding.Business.Api\DnDBagOfHolding.Business.Api.csproj", "{BB8E0102-A05E-43FB-A62B-DD415EE304C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDBagOfHolding.ApiService", "DnDBagOfHolding.ApiService\DnDBagOfHolding.ApiService.csproj", "{A03CDBC8-5235-6D0F-D25D-8E0301E73CE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,14 @@ Global
 		{12F474E8-4C7F-4F45-B627-42E110AC4899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12F474E8-4C7F-4F45-B627-42E110AC4899}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12F474E8-4C7F-4F45-B627-42E110AC4899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB8E0102-A05E-43FB-A62B-DD415EE304C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB8E0102-A05E-43FB-A62B-DD415EE304C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB8E0102-A05E-43FB-A62B-DD415EE304C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB8E0102-A05E-43FB-A62B-DD415EE304C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A03CDBC8-5235-6D0F-D25D-8E0301E73CE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A03CDBC8-5235-6D0F-D25D-8E0301E73CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A03CDBC8-5235-6D0F-D25D-8E0301E73CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A03CDBC8-5235-6D0F-D25D-8E0301E73CE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

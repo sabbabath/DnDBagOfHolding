@@ -9,6 +9,6 @@ namespace DnDBagOfHolding.Common
 {
     public class cMappingFunctions
     {
-        private static readonly cDtoContainer _container = 
+        private static readonly cDtoContainer _container; 
     }
 }

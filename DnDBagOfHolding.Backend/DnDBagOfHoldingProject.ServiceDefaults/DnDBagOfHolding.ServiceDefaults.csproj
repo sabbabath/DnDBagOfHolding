@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DbDBagOfHolding.Data\DnDBagOfHolding.Data.csproj" />
+    <ProjectReference Include="..\DnDBagOfHolding.Business.Api\DnDBagOfHolding.Business.Api.csproj" />
   </ItemGroup>
 
 </Project>

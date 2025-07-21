@@ -1,6 +1,6 @@
 ﻿using DnDBagOfHolding.Common.Models.Dtos;
 
-namespace DnDBagOfHolding.Business.Interfaces
+namespace DnDBagOfHolding.Business.Api.Interfaces
 {
     public interface iContainerTypeManager
     {

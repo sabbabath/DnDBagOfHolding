@@ -1,8 +1,6 @@
 ﻿using DnDBagOfHolding.Common.Models.Dtos;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace DnDBagOfHolding.Business.Interfaces
+namespace DnDBagOfHolding.Business.Api.Interfaces
 {
     public interface iItemManager
     {
