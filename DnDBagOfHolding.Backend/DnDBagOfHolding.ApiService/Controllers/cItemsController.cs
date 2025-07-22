@@ -1,8 +1,8 @@
 ﻿using DnDBagOfHolding.Business.Api.Interfaces;
-using Microsoft.AspNetCore.Http;
+using DnDBagOfHolding.Common.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DnDBagOfHolding.ServiceDefaults.Api
+namespace DnDBagOfHolding.ApiService.Controllers
 {
     [Route("api/items")]
     [ApiController]
@@ -12,17 +12,17 @@ namespace DnDBagOfHolding.ServiceDefaults.Api
         private readonly ILogger<cItemsController> cLogger;
 
         [HttpGet()]
-        public async Task<HttpResponse> GetAll()
+        public async Task<ActionResult<IEnumerable<cDtoItem>>> GetAll()
         {
             var items = await cItemManager.GetItems();
-
-            return null;
+            return Ok(items);
         }
 
         [HttpGet("{id}")]
-        public async Task<HttpResponse> GetById(long id)
+        public async Task<ActionResult> GetById(long id)
         {
-            return null;
+            var item = await cItemManager.GetItem(id);
+            return Ok(item);
         }
     }
 }
