@@ -1,22 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DnDBagOfHolding.Business.Api.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DnDBagOfHolding.ApiService.Controllers
 {
     [Route("api/containers")]
     [ApiController]
-    public class cContainersController : ControllerBase
+    public class cContainersController(iContainerManager containerManager, ILogger<cContainersController> cLogger) : ControllerBase
     {
+        private readonly iContainerManager mContainerManager = containerManager;
+
+        private readonly ILogger<cContainersController> cLogger = cLogger;
 
         [HttpGet()]
-        public async Task<HttpResponse> GetAll()
+        public async Task<ActionResult> GetAll()
         {
-            return null;
+            var containers = await mContainerManager.GetContainers();
+            return Ok(containers);
         }
 
         [HttpGet("{id}")]
-        public async Task<HttpResponse> GetById(long id)
+        public async Task<ActionResult> GetById(long id)
         {
-            return null;
+            var container = await mContainerManager.GetContainer(id);
+            if (container == null)
+            {
+                return NotFound();
+            }
+            return Ok(container);
         }
     }
 }
