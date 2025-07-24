@@ -1,4 +1,5 @@
 ﻿using DnDBagOfHolding.Business.Api.Interfaces;
+using DnDBagOfHolding.Common.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DnDBagOfHolding.ApiService.Controllers
@@ -28,6 +29,27 @@ namespace DnDBagOfHolding.ApiService.Controllers
             }
 
             return Ok(character);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateCharacter([FromBody] cDtoCharacter dto)
+        {
+            var character = await mCharacterManager.CreateCharacter(dto);
+            return Ok(character);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateCharacter([FromBody] cDtoCharacter dto)
+        {
+            var character = await mCharacterManager.UpdateCharacter(dto);
+            return Ok(character);
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteCharacter(long id)
+        {
+            await mCharacterManager.DeleteCharacter(id);
+            return NoContent();
         }
     }
 }

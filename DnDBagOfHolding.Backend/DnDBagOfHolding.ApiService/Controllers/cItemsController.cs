@@ -30,5 +30,26 @@ namespace DnDBagOfHolding.ApiService.Controllers
 
             return Ok(item);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<cDtoItem>> Create([FromBody] cDtoItem item)
+        {
+            var createdItem = await mItemManager.CreateItem(item);
+            return Ok(createdItem);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<cDtoItem>> Update([FromBody] cDtoItem item)
+        {
+            var updatedItem = await mItemManager.UpdateItem(item);
+            return Ok(updatedItem);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(long id)
+        {
+            await mItemManager.DeleteItem(id);
+            return NoContent();
+        }
     }
 }

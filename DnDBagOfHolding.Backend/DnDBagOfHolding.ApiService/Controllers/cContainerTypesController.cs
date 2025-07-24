@@ -25,5 +25,26 @@ namespace DnDBagOfHolding.ApiService.Controllers
             var containerType = await mContainerTypeManager.GetContainerType(id);
             return Ok(containerType);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<cDtoContainerType>> Create([FromBody] cDtoContainerType containerType)
+        {
+            var createdType = await mContainerTypeManager.CreateContainerType(containerType);
+            return Ok(createdType);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<cDtoContainerType>> Update([FromBody] cDtoContainerType containerType)
+        {
+            var updatedType = await mContainerTypeManager.UpdateContainerType(containerType);
+            return Ok(updatedType);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(long id)
+        {
+            await mContainerTypeManager.DeleteContainerType(id);
+            return NoContent();
+        }
     }
 }
