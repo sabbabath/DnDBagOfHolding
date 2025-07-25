@@ -10,6 +10,11 @@ namespace DnDBagOfHolding.Data.Models
     {
         public string Name { get; set; }
 
+        [ForeignKey("User")]
+        public long UserId { get; set; }
+
+        public cDbUser User { get; set; }
+
         public eSize CharacterSize { get; set; }
 
         public long StrengthScore { get; set; }

@@ -6,6 +6,8 @@ namespace DnDBagOfHolding.Common.Models.Dtos
     {
         public long Id { get; set; }
 
+        public long UserId { get; set; }
+
         public string Name { get; set; }
 
         public eSize CharacterSize { get; set; }
