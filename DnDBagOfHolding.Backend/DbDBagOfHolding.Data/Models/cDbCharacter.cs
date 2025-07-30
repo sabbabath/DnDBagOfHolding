@@ -19,7 +19,7 @@ namespace DnDBagOfHolding.Data.Models
 
         public long StrengthScore { get; set; }
 
-        public void UpdateFromDto(cDtoCharacter character)
+        public void UpdateFromDto(rDtoCharacter character)
         {
             if (character == null) return;
 

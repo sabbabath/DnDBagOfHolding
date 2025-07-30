@@ -8,7 +8,7 @@ namespace DnDBagOfHolding.Data.Models
     {
         public string Username { get; set; }
 
-        public void UpdateFromDto(cDtoUser user)
+        public void UpdateFromDto(rDtoUser user)
         {
             if (user == null) return;
 

@@ -4,13 +4,13 @@ namespace DnDBagOfHolding.Business.Api.Interfaces
 {
     public interface iItemManager
     {
-        Task<cDtoItem> GetItem(long id);
+        Task<rDtoItem> GetItem(long id);
         
-        Task<IEnumerable<cDtoItem>> GetItems();
+        Task<IEnumerable<rDtoItem>> GetItems();
         
-        Task<cDtoItem> CreateItem(cDtoItem item);
+        Task<rDtoItem> CreateItem(rDtoItem item);
         
-        Task<cDtoItem> UpdateItem(cDtoItem item);
+        Task<rDtoItem> UpdateItem(rDtoItem item);
         
         Task DeleteItem(long id);
     }

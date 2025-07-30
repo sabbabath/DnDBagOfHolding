@@ -4,13 +4,13 @@ namespace DnDBagOfHolding.Business.Api.Interfaces
 {
     public interface iContainerManager
     {
-        Task<cDtoContainer> GetContainer(long id);
+        Task<rDtoContainer> GetContainer(long id);
         
-        Task<IEnumerable<cDtoContainer>> GetContainers();
+        Task<IEnumerable<rDtoContainer>> GetContainers();
         
-        Task<cDtoContainer> CreateContainer(cDtoContainer container);
+        Task<rDtoContainer> CreateContainer(rDtoContainer container);
         
-        Task<cDtoContainer> UpdateContainer(cDtoContainer container);
+        Task<rDtoContainer> UpdateContainer(rDtoContainer container);
         
         Task DeleteContainer(long id);
     }

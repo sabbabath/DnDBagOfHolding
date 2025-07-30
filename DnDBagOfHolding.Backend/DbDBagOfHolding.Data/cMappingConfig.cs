@@ -8,19 +8,19 @@ namespace DnDBagOfHolding.Data
     {
         public static void RegisterMappings()
         {
-            TypeAdapterConfig<cDbCharacter, cDtoCharacter>.NewConfig()
+            TypeAdapterConfig<cDbCharacter, rDtoCharacter>.NewConfig()
                 .Map(dest => dest.Id, src => src.Id)
                 .Map(dest => dest.Name, src => src.Name)
                 .Map(dest => dest.CharacterSize, src => src.CharacterSize)
                 .Map(dest => dest.StrengthScore, src => src.StrengthScore);
 
-            TypeAdapterConfig<cDbItem, cDtoItem>.NewConfig()
+            TypeAdapterConfig<cDbItem, rDtoItem>.NewConfig()
                 .Map(dest => dest.Id, src => src.Id)
                 .Map(dest => dest.Name, src => src.Name)
                 .Map(dest => dest.Weight, src => src.Weight)
                 .Map(dest => dest.Size, src => src.Size);
 
-            TypeAdapterConfig<cDbContainerType, cDtoContainerType>.NewConfig()
+            TypeAdapterConfig<cDbContainerType, rDtoContainerType>.NewConfig()
                 .Map(dest => dest.Id, src => src.Id)
                 .Map(dest => dest.Name, src => src.Name)
                 .Map(dest => dest.WeightCapacity, src => src.WeightCapacity)
@@ -28,7 +28,7 @@ namespace DnDBagOfHolding.Data
                 .Map(dest => dest.IsMagical, src => src.IsMagical)
                 .Map(dest => dest.Value, src => src.Value);
 
-            TypeAdapterConfig<cDbContainer, cDtoContainer>.NewConfig()
+            TypeAdapterConfig<cDbContainer, rDtoContainer>.NewConfig()
                 .Map(dest => dest.Id, src => src.Id)
                 .Map(dest => dest.ContainerTypeId, src => src.ContainerTypeId)
                 .Map(dest => dest.CurrentWeight, src => src.CurrentWeight);

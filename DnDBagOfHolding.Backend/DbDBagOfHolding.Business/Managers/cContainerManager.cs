@@ -13,23 +13,23 @@ namespace DnDBagOfHolding.Business.Managers
 
         private readonly IMapper _mapper = mapper;
         
-        public async Task<cDtoContainer> GetContainer(long id)
+        public async Task<rDtoContainer> GetContainer(long id)
         {
             var dbContainer = await dbContext.Containers
                 .Include(x => x.ContainerType)
                 .FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("Container does not exist.");
-            return _mapper.Map<cDtoContainer>(dbContainer);
+            return _mapper.Map<rDtoContainer>(dbContainer);
         }
 
-        public async Task<IEnumerable<cDtoContainer>> GetContainers()
+        public async Task<IEnumerable<rDtoContainer>> GetContainers()
         {
             var dbContainers = await dbContext.Containers
                 .Include(x => x.ContainerType)
                 .ToListAsync();
-            return _mapper.Map<IEnumerable<cDtoContainer>>(dbContainers);
+            return _mapper.Map<IEnumerable<rDtoContainer>>(dbContainers);
         }
 
-        public async Task<cDtoContainer> CreateContainer(cDtoContainer container)
+        public async Task<rDtoContainer> CreateContainer(rDtoContainer container)
         {
             var dbContainer = _mapper.Map<cDbContainer>(container);
             await dbContext.Containers.AddAsync(dbContainer);
@@ -38,7 +38,7 @@ namespace DnDBagOfHolding.Business.Managers
             return container;
         }
 
-        public async Task<cDtoContainer> UpdateContainer(cDtoContainer container)
+        public async Task<rDtoContainer> UpdateContainer(rDtoContainer container)
         {
             var dbContainer = await dbContext.Containers.FirstOrDefaultAsync(x => x.Id == container.Id)
                 ?? throw new Exception("Container does not exist.");

@@ -14,7 +14,7 @@ namespace DnDBagOfHolding.Data.Models
 
         public int Quantity { get; set; }
 
-        public void UpdateFromDto(cDtoItemAssignment assignment)
+        public void UpdateFromDto(rDtoItemAssignment assignment)
         {
             if (assignment == null) return;
 

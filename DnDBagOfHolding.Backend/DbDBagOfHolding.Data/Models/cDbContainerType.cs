@@ -16,7 +16,7 @@ namespace DnDBagOfHolding.Data.Models
 
         public long Value { get; set; }
 
-        public void UpdateFromDto(cDtoContainerType containerType)
+        public void UpdateFromDto(rDtoContainerType containerType)
         {
             if (containerType == null) return;
 

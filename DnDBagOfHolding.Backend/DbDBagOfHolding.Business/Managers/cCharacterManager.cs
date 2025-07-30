@@ -13,20 +13,20 @@ namespace DnDBagOfHolding.Business.Managers
 
         private readonly IMapper _mapper = mapper;
 
-        public async Task<cDtoCharacter> GetCharacter(long id)
+        public async Task<rDtoCharacter> GetCharacter(long id)
         {
             var dbCharacter = await dbContext.Characters
                 .FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("Character does not exist.");
-            return _mapper.Map<cDtoCharacter>(dbCharacter);
+            return _mapper.Map<rDtoCharacter>(dbCharacter);
         }
 
-        public async Task<IEnumerable<cDtoCharacter>> GetCharacters()
+        public async Task<IEnumerable<rDtoCharacter>> GetCharacters()
         {
             var dbCharacters = await dbContext.Characters.ToListAsync();
-            return _mapper.Map<IEnumerable<cDtoCharacter>>(dbCharacters);
+            return _mapper.Map<IEnumerable<rDtoCharacter>>(dbCharacters);
         }
 
-        public async Task<cDtoCharacter> CreateCharacter(cDtoCharacter character)
+        public async Task<rDtoCharacter> CreateCharacter(rDtoCharacter character)
         {
             var dbCharacter = _mapper.Map<cDbCharacter>(character);
             await dbContext.Characters.AddAsync(dbCharacter);
@@ -35,7 +35,7 @@ namespace DnDBagOfHolding.Business.Managers
             return character;
         }
 
-        public async Task<cDtoCharacter> UpdateCharacter(cDtoCharacter character)
+        public async Task<rDtoCharacter> UpdateCharacter(rDtoCharacter character)
         {
             var dbCharacter = await dbContext.Characters.FirstOrDefaultAsync(x => x.Id == character.Id)
                 ?? throw new Exception("Character does not exist.");

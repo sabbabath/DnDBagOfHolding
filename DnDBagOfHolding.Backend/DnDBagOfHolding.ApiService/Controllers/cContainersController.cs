@@ -31,14 +31,14 @@ namespace DnDBagOfHolding.ApiService.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] cDtoContainer container)
+        public async Task<ActionResult> Create([FromBody] rDtoContainer container)
         {
             var createdContainer = await mContainerManager.CreateContainer(container);
             return Ok(createdContainer);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update([FromBody] cDtoContainer container)
+        public async Task<ActionResult> Update([FromBody] rDtoContainer container)
         {
             var updatedContainer = await mContainerManager.UpdateContainer(container);
             return Ok(updatedContainer);

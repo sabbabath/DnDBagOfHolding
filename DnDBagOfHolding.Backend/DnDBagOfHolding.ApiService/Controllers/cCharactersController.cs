@@ -32,14 +32,14 @@ namespace DnDBagOfHolding.ApiService.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateCharacter([FromBody] cDtoCharacter dto)
+        public async Task<ActionResult> CreateCharacter([FromBody] rDtoCharacter dto)
         {
             var character = await mCharacterManager.CreateCharacter(dto);
             return Ok(character);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateCharacter([FromBody] cDtoCharacter dto)
+        public async Task<ActionResult> UpdateCharacter([FromBody] rDtoCharacter dto)
         {
             var character = await mCharacterManager.UpdateCharacter(dto);
             return Ok(character);

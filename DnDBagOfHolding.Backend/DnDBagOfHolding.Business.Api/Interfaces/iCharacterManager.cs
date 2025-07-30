@@ -4,13 +4,13 @@ namespace DnDBagOfHolding.Business.Api.Interfaces
 {
     public interface iCharacterManager
     {
-        Task<cDtoCharacter> GetCharacter(long id);
+        Task<rDtoCharacter> GetCharacter(long id);
         
-        Task<IEnumerable<cDtoCharacter>> GetCharacters();
+        Task<IEnumerable<rDtoCharacter>> GetCharacters();
         
-        Task<cDtoCharacter> CreateCharacter(cDtoCharacter character);
+        Task<rDtoCharacter> CreateCharacter(rDtoCharacter character);
         
-        Task<cDtoCharacter> UpdateCharacter(cDtoCharacter character);
+        Task<rDtoCharacter> UpdateCharacter(rDtoCharacter character);
         
         Task DeleteCharacter(long id);
     }

@@ -13,28 +13,28 @@ namespace DnDBagOfHolding.ApiService.Controllers
         private readonly ILogger<cContainerTypesController> cLogger = cLogger;
 
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<cDtoContainerType>>> GetAll()
+        public async Task<ActionResult<IEnumerable<rDtoContainerType>>> GetAll()
         {
             var containerTypes = await mContainerTypeManager.GetContainerTypes();
             return Ok(containerTypes);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<cDtoContainerType>> GetById(long id)
+        public async Task<ActionResult<rDtoContainerType>> GetById(long id)
         {
             var containerType = await mContainerTypeManager.GetContainerType(id);
             return Ok(containerType);
         }
 
         [HttpPost]
-        public async Task<ActionResult<cDtoContainerType>> Create([FromBody] cDtoContainerType containerType)
+        public async Task<ActionResult<rDtoContainerType>> Create([FromBody] rDtoContainerType containerType)
         {
             var createdType = await mContainerTypeManager.CreateContainerType(containerType);
             return Ok(createdType);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<cDtoContainerType>> Update([FromBody] cDtoContainerType containerType)
+        public async Task<ActionResult<rDtoContainerType>> Update([FromBody] rDtoContainerType containerType)
         {
             var updatedType = await mContainerTypeManager.UpdateContainerType(containerType);
             return Ok(updatedType);

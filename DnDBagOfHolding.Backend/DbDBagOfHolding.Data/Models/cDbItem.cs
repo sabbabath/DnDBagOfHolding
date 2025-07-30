@@ -13,7 +13,7 @@ namespace DnDBagOfHolding.Data.Models
 
         public eSize Size { get; set; }
 
-        public void UpdateFromDto(cDtoItem item)
+        public void UpdateFromDto(rDtoItem item)
         {
             if (item == null) return;
 

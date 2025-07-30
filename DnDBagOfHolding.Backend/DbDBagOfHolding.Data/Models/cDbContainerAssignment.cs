@@ -17,7 +17,7 @@ namespace DnDBagOfHolding.Data.Models
 
         public virtual cDbCharacter Character { get; set; }
 
-        public void UpdateFromDto(cDtoContainerAssignment assignment)
+        public void UpdateFromDto(rDtoContainerAssignment assignment)
         {
             if (assignment == null) return;
 

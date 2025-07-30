@@ -12,7 +12,7 @@ namespace DnDBagOfHolding.Data.Models
 
         public long CurrentWeight { get; set; }
 
-        public void UpdateFromDto(cDtoContainer container)
+        public void UpdateFromDto(rDtoContainer container)
         {
             if (container == null) return;
 

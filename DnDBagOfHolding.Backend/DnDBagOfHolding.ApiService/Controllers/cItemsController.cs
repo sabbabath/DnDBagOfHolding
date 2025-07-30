@@ -13,14 +13,14 @@ namespace DnDBagOfHolding.ApiService.Controllers
         private readonly ILogger<cItemsController> cLogger = cLogger;
 
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<cDtoItem>>> GetAll()
+        public async Task<ActionResult<IEnumerable<rDtoItem>>> GetAll()
         {
             var items = await mItemManager.GetItems();
             return Ok(items);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<cDtoItem>> GetById(long id)
+        public async Task<ActionResult<rDtoItem>> GetById(long id)
         {
             var item = await mItemManager.GetItem(id);
             if (item == null)
@@ -32,14 +32,14 @@ namespace DnDBagOfHolding.ApiService.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<cDtoItem>> Create([FromBody] cDtoItem item)
+        public async Task<ActionResult<rDtoItem>> Create([FromBody] rDtoItem item)
         {
             var createdItem = await mItemManager.CreateItem(item);
             return Ok(createdItem);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<cDtoItem>> Update([FromBody] cDtoItem item)
+        public async Task<ActionResult<rDtoItem>> Update([FromBody] rDtoItem item)
         {
             var updatedItem = await mItemManager.UpdateItem(item);
             return Ok(updatedItem);
