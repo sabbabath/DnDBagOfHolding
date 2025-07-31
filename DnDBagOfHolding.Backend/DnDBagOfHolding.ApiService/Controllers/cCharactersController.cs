@@ -1,4 +1,4 @@
-﻿using DnDBagOfHolding.Business.Api.Interfaces;
+﻿using DnDBagOfHolding.Business.Interfaces;
 using DnDBagOfHolding.Common.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 

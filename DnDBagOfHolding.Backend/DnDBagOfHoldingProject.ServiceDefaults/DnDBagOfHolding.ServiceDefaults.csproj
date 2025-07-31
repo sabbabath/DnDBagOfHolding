@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DbDBagOfHolding.Data\DnDBagOfHolding.Data.csproj" />
-    <ProjectReference Include="..\DnDBagOfHolding.Business.Api\DnDBagOfHolding.Business.Api.csproj" />
   </ItemGroup>
 
 </Project>
