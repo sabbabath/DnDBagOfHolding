@@ -1,10 +1,11 @@
 ﻿namespace DnDBagOfHolding.Tests
 {
-    public class Tests
+    public class cContainerManagerTests
     {
         [SetUp]
         public void Setup()
         {
+
         }
 
         [Test]
