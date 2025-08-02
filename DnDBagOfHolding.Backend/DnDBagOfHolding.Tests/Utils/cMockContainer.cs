@@ -1,22 +1,21 @@
 ﻿using DnDBagOfHolding.Common.Models.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DnDBagOfHolding.Tests.Utils
 {
     public record rMockContainer : rDtoContainer
     {
-        public rMockContainer(long Id, long ContainerTypeId, rDtoContainerType ContainerType, long CurrentWeight, IEnumerable<rDtoItem> Items) : base(Id, ContainerTypeId, ContainerType, CurrentWeight, Items)
+        public rMockContainer(long Id = 0, long ContainerTypeId = 0, rDtoContainerType ContainerType = null, long CurrentWeight = 0, IEnumerable<rDtoItem> Items = null) : base(Id, ContainerTypeId, ContainerType, CurrentWeight, Items)
         {
-
+            this.Id = Id == 0 ? cNextID.NextId() : Id;
+            this.ContainerTypeId = ContainerTypeId == 0 ? cNextID.NextId() : ContainerTypeId;
+            this.ContainerType = ContainerType;
+            this.CurrentWeight = CurrentWeight;
+            this.Items = Items ?? [];
         }
 
-        public static rMockContainer WithContainerTypeId()
-        {
-
-        }
+        //public static rMockContainer WithContainerTypeId()
+        //{
+            
+        //}
     }
 }
