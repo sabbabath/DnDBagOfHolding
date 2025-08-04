@@ -12,10 +12,5 @@ namespace DnDBagOfHolding.Tests.Utils
             this.CurrentWeight = CurrentWeight;
             this.Items = Items ?? [];
         }
-
-        //public static rMockContainer WithContainerTypeId()
-        //{
-            
-        //}
     }
 }
