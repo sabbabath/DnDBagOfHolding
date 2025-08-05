@@ -1,16 +1,38 @@
 ﻿using DnDBagOfHolding.Common.Models.Dtos;
+using DnDBagOfHolding.Data;
+using DnDBagOfHolding.Data.Models;
 
 namespace DnDBagOfHolding.Tests.Utils
 {
-    public record rMockContainer : rDtoContainer
+    public class cMockContainer : cDbContainer
     {
-        public rMockContainer(long Id = 0, long ContainerTypeId = 0, rDtoContainerType ContainerType = null, long CurrentWeight = 0, IEnumerable<rDtoItem> Items = null) : base(Id, ContainerTypeId, ContainerType, CurrentWeight, Items)
+        public cMockContainer(long Id = 0, long ContainerTypeId = 0, rDtoContainerType ContainerType = null, long CurrentWeight = 0, IEnumerable<rDtoItem> Items = null) : base(Id, ContainerTypeId, ContainerType, CurrentWeight, Items)
         {
             this.Id = Id == 0 ? cNextID.NextId() : Id;
             this.ContainerTypeId = ContainerTypeId == 0 ? cNextID.NextId() : ContainerTypeId;
-            this.ContainerType = ContainerType;
             this.CurrentWeight = CurrentWeight;
-            this.Items = Items ?? [];
         }
-    }
+
+        public cMockContainer Save(cDbContext dbContext)
+        {
+            if (dbContext == null)
+            {
+                throw new ArgumentNullException(nameof(dbContext), "Database context cannot be null.");
+            }
+            dbContext.Containers.Add(this);
+            dbContext.SaveChanges();
+            return this;
+        }
+
+        public rDtoContainer ToDto()
+        {
+            return new rDtoContainer
+            {
+                Id = this.Id,
+                ContainerTypeId = this.ContainerTypeId,
+                ContainerType = this.ContainerType?.ToDto(),
+                CurrentWeight = this.CurrentWeight,
+                Items = this.Items?.Select(item => item.ToDto()).ToList() ?? new List<rDtoItem>()
+            };
+        }
 }
