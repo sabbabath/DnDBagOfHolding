@@ -1,6 +1,8 @@
 ﻿using DnDBagOfHolding.Business.Interfaces;
+using DnDBagOfHolding.Business.Managers;
 using DnDBagOfHolding.Data;
 using DnDBagOfHolding.Tests.Utils;
+using MapsterMapper;
 using Moq;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -13,15 +15,16 @@ namespace DnDBagOfHolding.Tests
         [TestMethod]
         public async Task Inserting_Data_To_DatabaseAsync()
         {
-            // Arrange
-            Mock<iContainerManager> mContainerManager = new();
+            // TODO: I don't think I'm connected to the right database. Double check.
             
-            var containerManager = mContainerManager.Object;
-            var dbContext = new Mock<cDbContext>();
+            // Arrange
+            var dbContext = new cDbContext();
+            var mapper = new Mapper();
+            var mContainerManager = new cContainerManager(dbContext, mapper);
             var container = new cMockContainer();
 
             // Act
-            var result = await containerManager.CreateContainer(container);
+            var result = await mContainerManager.CreateContainer(container.ToDto());
 
             // Assert
             Assert.IsNotNull(result);

@@ -6,7 +6,7 @@ namespace DnDBagOfHolding.Tests.Utils
 {
     public class cMockContainer : cDbContainer
     {
-        public cMockContainer(long Id = 0, long ContainerTypeId = 0, rDtoContainerType ContainerType = null, long CurrentWeight = 0, IEnumerable<rDtoItem> Items = null) : base(Id, ContainerTypeId, ContainerType, CurrentWeight, Items)
+        public cMockContainer(long Id = 0, long ContainerTypeId = 0, rDtoContainerType ContainerType = null, long CurrentWeight = 0, IEnumerable<rDtoItem> Items = null)
         {
             this.Id = Id == 0 ? cNextID.NextId() : Id;
             this.ContainerTypeId = ContainerTypeId == 0 ? cNextID.NextId() : ContainerTypeId;
@@ -26,13 +26,7 @@ namespace DnDBagOfHolding.Tests.Utils
 
         public rDtoContainer ToDto()
         {
-            return new rDtoContainer
-            {
-                Id = this.Id,
-                ContainerTypeId = this.ContainerTypeId,
-                ContainerType = this.ContainerType?.ToDto(),
-                CurrentWeight = this.CurrentWeight,
-                Items = this.Items?.Select(item => item.ToDto()).ToList() ?? new List<rDtoItem>()
-            };
+            return new rDtoContainer(this.Id, this.ContainerTypeId, null, this.CurrentWeight, null);
         }
+    }
 }
