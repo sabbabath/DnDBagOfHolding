@@ -1,9 +1,7 @@
-﻿using DnDBagOfHolding.Business.Interfaces;
-using DnDBagOfHolding.Business.Managers;
+﻿using DnDBagOfHolding.Business.Managers;
 using DnDBagOfHolding.Data;
 using DnDBagOfHolding.Tests.Utils;
 using MapsterMapper;
-using Moq;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace DnDBagOfHolding.Tests

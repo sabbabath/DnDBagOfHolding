@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DnDBagOfHolding.Data.Migrations
 {
     [DbContext(typeof(cDbContext))]
-    [Migration("20250806224040_newMigration")]
-    partial class newMigration
+    [Migration("20250807161248_InitialDatabaseCreation")]
+    partial class InitialDatabaseCreation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
