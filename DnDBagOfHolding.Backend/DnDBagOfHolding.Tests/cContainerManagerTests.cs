@@ -2,6 +2,8 @@
 using DnDBagOfHolding.Data;
 using DnDBagOfHolding.Tests.Utils;
 using MapsterMapper;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace DnDBagOfHolding.Tests
@@ -9,12 +11,26 @@ namespace DnDBagOfHolding.Tests
     [TestClass]
     public class cContainerManagerTests
     {
+        private IServiceProvider serviceProvider;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            // https://medium.com/codenx/ef-core-in-memory-database-unit-testing-02d4658a9c78
+            var services = new ServiceCollection();
+
+            services.AddDbContext<cDbContext>(options =>
+            {
+                options.UseInMemoryDatabase("DnDBagOfHoldingTestDb");
+            });
+
+            serviceProvider = services.BuildServiceProvider();
+        }
+
 
         [TestMethod]
         public async Task Inserting_Data_To_DatabaseAsync()
         {
-            // TODO: I don't think I'm connected to the right database. Double check.
-            
             // Arrange
             var dbContext = new cDbContext();
             var mapper = new Mapper();
