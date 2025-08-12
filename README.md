@@ -26,26 +26,26 @@
 - item types?
 
 # Starting Implementation:
-- [ ] Database design
-	- [ ] Create DB mockup to outline primary/foreign keys and relationships
-- [ ] Get/Create/Update containers
-	- [ ] Create APIs for GET/POST/PUT
-	- [ ] Create Managers for Business functions
-- [ ] Get/Create/Update items
-	- [ ] Create APIs for GET/POST/PUT
-	- [ ] Create Managers for Business functions
-- [ ] Get/Create/Update Characters
-	- [ ] Create APIs for GET/POST/PUT
-	- [ ] Create Managers for Business functions
-- [ ] Get/Create/Update container assignments
-	- [ ] Create APIs for GET/POST/PUT
-	- [ ] Create Managers for Business functions
-- [ ] Get/Create/Update item assignments
-	- [ ] Create APIs for GET/POST/PUT
-	- [ ] Create Managers for Business functions
-- [ ] Get/Create/Update User Information
-	- [ ] Create APIs for GET/POST/PUT
-	- [ ] Create Managers for Business functions
+- [x] Database design
+	- [x] Create DB mockup to outline primary/foreign keys and relationships
+- [x] Get/Create/Update containers
+	- [x] Create APIs for GET/POST/PUT
+	- [x] Create Managers for Business functions
+- [x] Get/Create/Update items
+	- [x] Create APIs for GET/POST/PUT
+	- [x] Create Managers for Business functions
+- [x] Get/Create/Update Characters
+	- [x] Create APIs for GET/POST/PUT
+	- [x] Create Managers for Business functions
+- [x] Get/Create/Update container assignments
+	- [x] Create APIs for GET/POST/PUT
+	- [x] Create Managers for Business functions
+- [x] Get/Create/Update item assignments
+	- [x] Create APIs for GET/POST/PUT
+	- [x] Create Managers for Business functions
+- [x] Get/Create/Update User Information
+	- [x] Create APIs for GET/POST/PUT
+	- [x] Create Managers for Business functions
 - [ ] Create frontend design
 	- [ ] Create mockup of UX
 	- [ ] Create possible user interactions/wants
