@@ -29,7 +29,7 @@ namespace DnDBagOfHolding.Tests
 
 
         [TestMethod]
-        public async Task Inserting_Data_To_DatabaseAsync()
+        public async Task Should_Create_New_Container()
         {
             // Arrange
             var dbContext = new cDbContext();
@@ -43,5 +43,56 @@ namespace DnDBagOfHolding.Tests
             // Assert
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public async Task Should_Update_Existing_Container()
+        {
+            // Arrange
+            var dbContext = new cDbContext();
+            var mapper = new Mapper();
+            var mContainerManager = new cContainerManager(dbContext, mapper);
+            var container = new cMockContainer();
+
+            // Act
+            var result = await mContainerManager.UpdateContainer(container.ToDto());
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+
+        [TestMethod]
+        public async Task Should_Delete_Container()
+        {
+            // Arrange
+            var dbContext = new cDbContext();
+            var mapper = new Mapper();
+            var mContainerManager = new cContainerManager(dbContext, mapper);
+            var container = new cMockContainer();
+
+            // Act
+            var result = await mContainerManager.GetContainer(container.Id);
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+
+        [TestMethod]
+        public async Task Should_Get_Container()
+        {
+            // Arrange
+            var dbContext = new cDbContext();
+            var mapper = new Mapper();
+            var mContainerManager = new cContainerManager(dbContext, mapper);
+            var container = new cMockContainer();
+
+            // Act
+            var result = await mContainerManager.GetContainer(container.Id);
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
     }
 }
